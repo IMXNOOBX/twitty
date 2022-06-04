@@ -1,0 +1,34 @@
+{
+  "name": "twitty",
+  "version": "1.0.1",
+  "description": "Twitter bot :D",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IMXNOOBX/twitty.git"
+  },
+  "keywords": [
+    "bot",
+    "discord.js",
+    "twitter",
+    "twitter-api-v2",
+    "noob"
+  ],
+  "author": "IMXNOOBX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IMXNOOBX/twitty/issues"
+  },
+  "homepage": "https://github.com/IMXNOOBX/twitty#readme",
+  "dependencies": {
+    "dis-logs": "^1.2.8",
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "node-schedule": "^2.1.0",
+    "twitter-api-v2": "^1.12.2"
+  }
+}
