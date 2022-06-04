@@ -2,6 +2,7 @@ const { TwitterApi } = require('twitter-api-v2')
 require('dotenv').config()
 const Discord = require('discord.js');
 const { Webhook } = require('dis-logs');
+const bodyParser = require('body-parser')
 const GithubWebHook = require('express-github-webhook');
 
 // Initialize Discord Client
@@ -22,15 +23,15 @@ const userClient = new TwitterApi({
 	accessSecret: process.env.ACCES_SECRET,
 });
 
-const rwClient = userClient.readWrite;
 
 // global imports
 client.fs = require('fs');
 client.config = require('./conf/config.json');
 client.log = new Webhook(client.config.discord.utils.log_webhook);
 // twitter
-client.tclient = rwClient;
-client.github = GithubWebHook({ path: '/github/webhook', secret: process.env.GITHUB_SECRET });;
+client.tclient = userClient.readWrite;
+client.bodyParser = bodyParser;
+client.github = GithubWebHook({ path: '/github/webhook', secret: process.env.GITHUB_SECRET ? process.env.GITHUB_SECRET : null });;
 client.twitter = require('./utils/twitter.js');
 // github
 client.express = require("express");
