@@ -8,5 +8,10 @@
             "invite": "https://discord.com/api/oauth2/authorize?client_id=982671809868619826&permissions=416545098816&scope=bot%20applications.commands",
             "log_webhook": "https://discord.com/api/webhooks/982674229742927984/LgZfJgYOrnYyXkVAdS187IA6NI4jVwkVayz5FgYvb8xyyG3vTJt1dOYCPzx4tzoyC_jg"
         }
+    },
+    "github": {
+        "evets": [
+            "push"
+        ]
     }
 }
