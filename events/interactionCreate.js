@@ -6,6 +6,7 @@ module.exports.run = async (client, interaction) => {
 
         const command = client.commands.slash.get(interaction.commandName);
         if (!command) return;
+        if (command.developer && interaction.user.id !== client.config.discord.owner_id) return;
 
         const args = [];
 
