@@ -1,6 +1,6 @@
 {
   "name": "twitty",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Twitter bot :D",
   "main": "index.js",
   "scripts": {
