@@ -10,7 +10,7 @@
     "github": {
         "webhook_host": "",
         "webhook_port": 3000,
-        "evets": [
+        "events": [
             "push",
             "public",
             "star",
