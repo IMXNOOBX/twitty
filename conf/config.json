@@ -8,13 +8,6 @@
         }
     },
     "github": {
-        "webhook_host": "<ip>",
-        "webhook_port": 44444,
-        "events": [
-            "push",
-            "public",
-            "star",
-            "fork"
-        ]
+        "webhook_port": 44444
     }
 }
