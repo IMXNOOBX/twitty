@@ -2,8 +2,13 @@
 class twitter {
 	static async tweet(client, string, poll = null) {
 		try {
-			let data = await client.tclient.v2.tweet(string, { poll: poll });
-			return data?.data;
+			var me = await client.tclient.v2.me(), me = me.data
+			var linebreak = ''
+			string.split("\\n").forEach(lb => { // ik it's poor, but it works
+				linebreak += '\n'+ `${lb}`;
+			})
+			var data = await client.tclient.v2.tweet(linebreak, poll ? { poll: poll } : null);
+			return { data: data?.data, me };
 		} catch (err) {
 			client.log.error(err);
 		}

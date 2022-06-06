@@ -8,8 +8,12 @@
         }
     },
     "github": {
+        "webhook_port": 44444,
         "evets": [
-            "push"
+            "push",
+            "public",
+            "star",
+            "fork"
         ]
     }
 }
