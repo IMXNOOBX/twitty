@@ -1,15 +1,20 @@
 {
     "discord": {
-        "prefix": "!",
+        "prefix": "",
         "owner_id": "",
         "utils": {
-            "invite": "%20applications.commands",
+            "invite": "",
             "log_webhook": ""
         }
     },
     "github": {
+        "webhook_host": "",
+        "webhook_port": 3000,
         "evets": [
-            ""
+            "push",
+            "public",
+            "star",
+            "fork"
         ]
     }
 }

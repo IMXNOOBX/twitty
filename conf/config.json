@@ -8,6 +8,7 @@
         }
     },
     "github": {
+        "webhook_host": "<ip>",
         "webhook_port": 44444,
         "evets": [
             "push",
