@@ -1,6 +1,6 @@
 module.exports = {
     name: 'tweet',
-    description: 'Tweet a tweet from discord.',
+    description: 'Send a tweet from discord.',
     options: [
         {
             name: "message",
