@@ -24,6 +24,7 @@ module.exports = {
                 .setColor('#FF5A5A')
                 .setTitle(`Error`)
                 .setDescription(`**Invalid Username Or User ID**`)
+                .addField(`Debug Error`, `\`\`\`js\n${error?.message}\`\`\``)
 
             interaction.followUp({ embeds: [embed] })
         })

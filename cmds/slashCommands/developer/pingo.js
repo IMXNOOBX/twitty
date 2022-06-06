@@ -3,7 +3,15 @@ module.exports = {
     description: 'Check bots ping',
     developer: true,
     run: async (client, interaction) => {
-        interaction.followUp({ content: client.ws.ping + 'ms', ephemeral: true })
+        var data = await client.tclient.v2.tweet(`
+Testing 
+line 
+breaks
+on 
+twitter-api-v2
+        `);
+        console.log(data)
+        // interaction.followUp({ content: client.ws.ping + 'ms', ephemeral: true })
     }
 }
 
