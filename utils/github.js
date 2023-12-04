@@ -5,45 +5,45 @@ module.exports = function (client) {
 	// app.use(client.express.urlencoded({ extended: true }))
 
 	client.github.on('*', function (event, repo, data) { // push, workflow_run, check_run, workflow_job, etc... // I have to check more events to filter them
-		for (var i; i < client.config.github.events.length; i++) {
-			if (client.config.github.events[i] === event) {
-				client.log.console(`[Github] | ${event} event has been triggered`);
+		// for (var i; i < client.config.github.events.length; i++) {
+		// 	if (client.config.github.events[i] === event) {
+		client.log.console(`[Github] | ${event} event has been triggered`);
 
-				switch (event) {
-					case 'push':
-						client.twitter.tweet(client, `New Commit On ${data.repository.name}\n\nPusher: ${data.pusher.name}\nCommit Message: ${data.head_commit.message}\nCheck Commit: ${data.head_commit.url}`).then(data => {
-							client.log.success('[Github] | Tweeted new commit\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
-						}).catch(error => {
-							client.log.error('[Github] | Error Tweeting new commit\nError Message: ' + error?.message);
-						});
-						break;
-					case 'public':
-						client.twitter.tweet(client, `The Repository ${data.repository.name} is now open sourced!\n\nCheck Repository: ${data.repository.url}`).then(data => {
-							client.log.success('[Github] | Tweeted open sourced repository\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
-						}).catch(error => {
-							client.log.error('[Github] | Error Tweeting open sourced repository\nError Message: ' + error?.message);
-						});
-						break;
-					case 'star':
-						client.twitter.tweet(client, `New Star Added To ${data.repository.name}\n\nThank you ${data.sender.login} for the star!`).then(data => {
-							client.log.success('[Github] | Tweeted new star\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
-						}).catch(error => {
-							client.log.error('[Github] | Error Tweeting new star\nError Message: ' + error?.message);
-						});
-						break;
-					case 'fork':
-						client.twitter.tweet(client, `New Fork On ${data.repository.name}\n\nThank you ${data.sender.login} for the fork!`).then(data => {
-							client.log.success('[Github] | Tweeted new fork\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
-						}).catch(error => {
-							client.log.error('[Github] | Error Tweeting new fork\nError Message: ' + error?.message);
-						});
-						break;
-					default:
+		switch (event) {
+			case 'push':
+				client.twitter.tweet(client, `New Commit On ${data.repository.name}\n\nPusher: ${data.pusher.name}\nCommit Message: ${data.head_commit.message}\nCheck Commit: ${data.head_commit.url}`).then(data => {
+					client.log.success('[Github] | Tweeted new commit\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
+				}).catch(error => {
+					client.log.error('[Github] | Error Tweeting new commit\nError Message: ' + error?.message);
+				});
+				break;
+			case 'public':
+				client.twitter.tweet(client, `The Repository ${data.repository.name} is now open sourced!\n\nCheck Repository: ${data.repository.html_url}`).then(data => {
+					client.log.success('[Github] | Tweeted open sourced repository\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
+				}).catch(error => {
+					client.log.error('[Github] | Error Tweeting open sourced repository\nError Message: ' + error?.message);
+				});
+				break;
+			case 'star':
+				client.twitter.tweet(client, `New Star Added To ${data.repository.name}\n\nThank you ${data.sender.login} for the star!`).then(data => {
+					client.log.success('[Github] | Tweeted new star\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
+				}).catch(error => {
+					client.log.error('[Github] | Error Tweeting new star\nError Message: ' + error?.message);
+				});
+				break;
+			case 'fork':
+				client.twitter.tweet(client, `New Fork On ${data.repository.name}\n\nThank you ${data.sender.login} for the fork!`).then(data => {
+					client.log.success('[Github] | Tweeted new fork\nCheck Tweet: ' + `https://twitter.com/${data.me.username}/status/${data.data.id}`);
+				}).catch(error => {
+					client.log.error('[Github] | Error Tweeting new fork\nError Message: ' + error?.message);
+				});
+				break;
+			default:
 
-						break;
-				}
-			}
+				break;
 		}
+		// 	}
+		// }
 	});
 
 	app.listen(client.config.github.webhook_port, () => {
